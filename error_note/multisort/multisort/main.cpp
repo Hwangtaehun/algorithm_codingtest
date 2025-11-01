@@ -5,6 +5,14 @@ using namespace std;
 struct Score
 {
 	int english, math;
+
+	bool operator<(const Score& other) const {
+		if (math != other.math) {
+			return math > other.math;
+		}
+		
+		return english > other.english;
+	}
 };
 
 bool compare(const Score& a, const Score& b) {
@@ -25,6 +33,7 @@ int main() {
 
 	int n = sizeof(score) / sizeof(score[0]);
 	sort(score, score + n, compare);
+	//sort(score, score + n);
 
 	for (int i = 0; i < n; i++)
 	{
