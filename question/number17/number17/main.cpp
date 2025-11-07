@@ -20,19 +20,18 @@ int main() {
 	}
 
 	for (int i = 0; i < data.size(); i++) {
-		int max = 0, idx = i;
+		int max = i;
 
 		for (int j = i; j < data.size(); j++) {
-			if (data[j] > max) {
-				idx = j;
-				max = data[j];
+			if (data[j] > data[max]) {
+				max = j;
 			}
 		}
 
-		if (idx != i) {
+		if (data[i] < data[max]) {
 			int temp = data[i];
-			data[i] = data[idx];
-			data[idx] = temp;
+			data[i] = data[max];
+			data[max] = temp;
 		}
 	}
 
