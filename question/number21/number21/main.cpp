@@ -3,12 +3,13 @@
 
 using namespace std;
 
-static int result;
+static int cnt;
+static long result;
+static vector<int> tmp(cnt);
 
 void mergesort(vector<int>& v, int s, int e);
 
 int main() {
-	int cnt;
 	vector<int> data;
 
 	ios::sync_with_stdio(false);
@@ -30,7 +31,6 @@ int main() {
 
 void mergesort(vector<int>& v, int s, int e) {
 	int m, k, idx1, idx2;
-	vector<int> tmp(e + 1, 0);
 
 	if (e - s < 1) {
 		return;
