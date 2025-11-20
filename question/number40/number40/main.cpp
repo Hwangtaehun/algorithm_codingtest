@@ -1,9 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <cmath>
 
 using namespace std;
-
-bool sosu(int num);
 
 int main()
 {
@@ -15,33 +14,33 @@ int main()
 	cout.tie(NULL);
 
 	cin >> min >> max;
+	result.resize(max + 1);
 
-	for (int i = min; i <= max; i++)
+	for (int i = 2; i <= max; i++)
 	{
-		if (sosu(i))
+		result[i] = i;
+	}
+
+	for (int i = 2; i <= sqrt(max); i++)
+	{
+		if (result[i] == 0)
 		{
-			result.push_back(i);
+			continue;
+		}
+
+		for (int j = i + i; j <= max; j = j + i)
+		{
+			result[j] = 0;
 		}
 	}
 
-	for (int i = 0; i < result.size(); i++)
+	for (int i = min; i <= max; i++)
 	{
-		cout << result[i] << "\n";
+		if (result[i] != 0) {
+			cout << result[i] << "\n";
+		}
 	}
 	cout.flush();
 
 	return 0;
-}
-
-bool sosu(int num)
-{
-	for (int i = 2; i < num; i++)
-	{
-		if ((num % i) == 0)
-		{
-			return false;
-		}
-	}
-
-	return true;
 }
