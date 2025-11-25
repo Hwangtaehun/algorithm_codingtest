@@ -11,14 +11,14 @@ void dfs(int node);
 
 int main()
 {
-	int tcase;
+	int n;
 	ios::sync_with_stdio(false);
 	cin.tie(NULL);
 	cout.tie(NULL);
 
-	cin >> tcase;
+	cin >> n;
 
-	for (int i = 0; i < tcase; i++)
+	for (int i = 0; i < n; i++)
 	{
 		int v, e;
 		cin >> v >> e;
@@ -35,7 +35,7 @@ int main()
 			list[end].push_back(start);
 		}
 
-		for (int i = 0; i <= v; i++)
+		for (int i = 1; i <= v; i++)
 		{
 			if (iseven)
 			{
@@ -48,13 +48,6 @@ int main()
 		}
 
 		result.push_back(iseven);
-
-		for (int i = 0; i <= v; i++)
-		{
-			list[i].clear();
-			visited[i] = false;
-			check[i] = 0;
-		}
 	}
 
 	for (int i = 0; i < result.size(); i++)
@@ -86,7 +79,7 @@ void dfs(int node)
 		}
 		else if (check[node] == check[i])
 		{
-			iseven = true;
+			iseven = false;
 		}
 	}
 }
