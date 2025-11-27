@@ -22,7 +22,7 @@ int main()
 	
 	bfs();
 
-	for (int i = 0; i < 201; i++)
+	for (int i = 0; i < SIZE; i++)
 	{
 		if (answer[i])
 		{
@@ -44,6 +44,7 @@ void bfs()
 	{
 		int a, b, c;
 		pair<int, int> p = queue.front();
+		queue.pop();
 		a = p.first;
 		b = p.second;
 		c = now[2] - a - b;
