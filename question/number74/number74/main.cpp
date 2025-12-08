@@ -7,7 +7,7 @@ using namespace std;
 static vector<long> tree;
 long getSum(int s, int e);
 void setTree(int i);
-void chagenVal(int index, long val);
+void changeVal(int index, long val);
 
 int main()
 {
@@ -45,6 +45,12 @@ int main()
 		{
 			changeVal(leftNodeStartIndex + s, e);
 		}
+		else if (a == 2)
+		{
+			s += leftNodeStartIndex;
+			e += leftNodeStartIndex;
+			cout << getSum(s, e) << "\n";
+		}
 	}
 
 	return 0;
@@ -52,13 +58,42 @@ int main()
 
 long getSum(int s, int e)
 {
-	return 0;
+	long partSum = 0;
+
+	while (s <= e)
+	{
+		if (s % 2 == 1) {
+			partSum += tree[s];
+			s++;
+		}
+
+		if (e % 2 == 0) {
+			partSum += tree[e];
+			e--;
+		}
+
+		s /= 2;
+		e /= 2;
+	}
+	return partSum;
 }
 
 void changeVal(int index, long val)
 {
+	long diff = val - tree[index];
+
+	while (index > 0)
+	{
+		tree[index] += diff;
+		index /= 2;
+	}
 }
 
 void setTree(int i)
 {
+	while (i != 1)
+	{
+		tree[i / 2] += tree[i];
+		i--;
+	}
 }
